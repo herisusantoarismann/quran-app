@@ -4,6 +4,7 @@ import axios from 'axios'
 export const Home = () => {
     const [data, setData] = useState(undefined)
     const [menu, setMenu] = useState(false)
+    const [sort, setSort] = useState({number:1, type:false})
 
     const getData = () => {
         axios.get(`https://quran-endpoint.vercel.app/quran`)
@@ -11,6 +12,14 @@ export const Home = () => {
                 const quran = res.data.data
                 setData(quran)
             })
+    }
+
+    const changeSort = (number, type) => {
+        if(number != sort.number){
+            setSort({number:number, type:false})
+        }else{
+            setSort({number:number, type:type})
+        }
     }
 
     useEffect(() => {
@@ -47,21 +56,66 @@ export const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="h-5/6 bg-primary my-6 mx-4 lg:mx-12 p-4 lg:p-6 grid grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6 gap-4 rounded-lg overflow-scroll">
-                        {data.map((item) => {
-                            return(
-                                <div className='bg-white h-32 p-2 rounded-md flex justify-between flex-col text-sm' key={item.number}>
-                                    <div className='flex justify-between items-center'>
-                                        <span>{item.number}</span>
-                                        <i className="fa-solid fa-star text-secondary"></i>
-                                    </div>
-                                    <div className=''>
-                                        <p className='font-semibold tracking-wide'>{item.asma.id.short}</p>
-                                        <p className='text-gray-400'>{item.asma.translation.id}</p>
-                                    </div>
+                    <div className="h-5/6 bg-primary my-6 mx-4 lg:mx-12 p-4 lg:p-6 rounded-lg overflow-scroll">
+                        <div className="flex justify-end mt-2 mb-4 text-xs">
+                            {/* <div className="p-1 w-24">
+                                <div>
+                                    <p>Sort By</p>
+                                    <p>Number</p>
                                 </div>
-                            )
-                        })}
+                            </div>
+                            <div className="">
+                                <p>Sort By</p>
+                                <p>Alphabet</p>
+                            </div>
+                            <div className="">
+                                <p>Sort By</p>
+                                <p>Total Ayat</p>
+                            </div> */}
+                            <div className={`p-1 w-24 flex items-center gap-1 cursor-pointer ${sort.number == 1 ? 'text-black' : 'text-slate-400'}`} onClick={() => changeSort(1, !sort.type)}>
+                                <p>Number</p>
+                                {sort.type && sort.number == 1 ? (
+                                    <i className="fa-solid fa-arrow-up"></i>
+                                ) : (
+                                    <i className="fa-solid fa-arrow-down"></i>
+                                )}
+                            </div>
+                            <div className={`p-1 w-24 flex items-center gap-1 cursor-pointer ${sort.number == 2 ? 'text-black' : 'text-slate-400'}`} onClick={() => changeSort(2, !sort.type)}>
+                                <p>Alphabet</p>
+                                {sort.type && sort.number == 2 ? (
+                                    <i className="fa-solid fa-arrow-up"></i>
+                                ) : (
+                                    <i className="fa-solid fa-arrow-down"></i>
+                                )}
+                            </div>
+                            <div className={`p-1 w-24 flex items-center gap-1 cursor-pointer ${sort.number == 3 ? 'text-black' : 'text-slate-400'}`} onClick={() => changeSort(3, !sort.type)}>
+                                <p>Total Ayat</p>
+                                {sort.type && sort.number == 3 ? (
+                                    <i className="fa-solid fa-arrow-up"></i>
+                                ) : (
+                                    <i className="fa-solid fa-arrow-down"></i>
+                                )}
+                            </div>
+                        </div>
+                        <div className="my-2 grid grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6 gap-4">
+                            {data.map((item) => {
+                                return(
+                                    <div className='bg-white h-32 p-2 rounded-md flex justify-between flex-col text-sm' key={item.number}>
+                                        <div className='flex justify-between items-center'>
+                                            <span>{item.number}</span>
+                                            <i className="fa-solid fa-star text-secondary"></i>
+                                        </div>
+                                        <div className=''>
+                                            <p className='font-semibold tracking-wide'>{item.asma.id.short}</p>
+                                            <p className='text-gray-400'>{item.asma.translation.id}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    <div className="text-center text-sm font-bold text-slate-400">
+                        &copy; Copyright {new Date().getFullYear()}, All Right Reversed.
                     </div>
                 </>
             ) : (
