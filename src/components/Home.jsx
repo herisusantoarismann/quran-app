@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ListBox } from "./ListBox";
+import { Outlet } from "react-router-dom";
 
 export const Home = () => {
   const [data, setData] = useState(undefined);
@@ -81,7 +82,9 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          <ListBox data={data} />
+          <div className="h-5/6 bg-primary my-6 mx-4 lg:ml-24 lg:mr-12 p-4 lg:p-6 rounded-lg lg:rounded-3xl overflow-y-auto">
+            <Outlet context={[data, setData]} />
+          </div>
           <div className="text-center text-sm font-bold text-slate-400">
             &copy; Copyright {new Date().getFullYear()}, All Right Reversed.
           </div>

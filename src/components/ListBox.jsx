@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link, useOutletContext } from "react-router-dom";
 
-export const ListBox = (props) => {
-  const [data, setData] = useState(props.data);
+export const ListBox = () => {
+  const [data, setData] = useOutletContext();
+  const [id, setId] = useOutletContext();
   // type false if ascending and true if descending
   const [sort, setSort] = useState({ number: 1, type: false });
 
@@ -43,7 +45,7 @@ export const ListBox = (props) => {
   };
 
   return (
-    <div className="h-5/6 bg-primary my-6 mx-4 lg:ml-24 lg:mr-12 p-4 lg:p-6 rounded-lg lg:rounded-3xl overflow-y-auto">
+    <>
       <div className="flex justify-end mt-2 mb-8 text-xs md:text-sm">
         <div className="hidden sm:flex gap-4">
           <div
@@ -146,24 +148,27 @@ export const ListBox = (props) => {
       <div className="my-2 lg:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
         {data.map((item, index) => {
           return (
-            <div
-              className="bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3"
-              key={item.number}
-            >
-              <div className="flex justify-between items-center">
-                <span>{index + 1}</span>
-                <i className="fa-solid fa-star text-secondary"></i>
+            <Link to={`/${item.number}`}>
+              <div
+                className="bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3"
+                key={item.number}
+                onClick={() => setId(item.number)}
+              >
+                <div className="flex justify-between items-center">
+                  <span>{index + 1}</span>
+                  <i className="fa-solid fa-star text-secondary"></i>
+                </div>
+                <div className="">
+                  <p className="font-semibold xl:font-bold tracking-wide">
+                    {item.asma.id.short}
+                  </p>
+                  <p className="text-gray-400">{item.asma.translation.id}</p>
+                </div>
               </div>
-              <div className="">
-                <p className="font-semibold xl:font-bold tracking-wide">
-                  {item.asma.id.short}
-                </p>
-                <p className="text-gray-400">{item.asma.translation.id}</p>
-              </div>
-            </div>
+            </Link>
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
