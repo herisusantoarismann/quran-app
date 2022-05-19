@@ -73,8 +73,8 @@ export const Home = () => {
                             </div>
                         </div> */}
                         <div className="flex">
-                            <div className="mr-4 border-2 border-gray-400 rounded-lg">
-                                <input className='w-48 px-2 sm:px-3 sm:py-1 text-sm outline-none rounded-lg' type="text" placeholder='Search'/>
+                            <div className="mr-4 border-2 border-gray-400 rounded-lg md:rounded-full">
+                                <input className='w-48 px-2 sm:px-3 sm:py-1 md:p-4 md:py-2 text-sm outline-none rounded-lg md:rounded-full' type="text" placeholder='Search'/>
                                 <i className="fa-solid fa-magnifying-glass mr-2"></i>
                             </div>
                             <div className='relative'>
@@ -83,9 +83,9 @@ export const Home = () => {
                         </div>
                     </div>
                     <div className="h-5/6 bg-primary my-6 mx-4 lg:mx-12 p-4 lg:p-6 rounded-lg overflow-scroll">
-                        <div className="flex justify-end mt-2 mb-4 text-xs md:text-sm">
+                        <div className="flex justify-end mt-2 mb-8 text-xs md:text-sm">
                             <div className="hidden sm:flex gap-4">
-                                <div className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg cursor-pointer ${sort.number == 1 ? 'bg-white' : ''}`} onClick={() => changeSort(1, !sort.type)}>
+                                <div className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer ${sort.number == 1 ? 'bg-white' : 'blur-[0.6px]'}`} onClick={() => changeSort(1, !sort.type)}>
                                     <div className="leading-6">
                                         <p className='text-slate-400'>Sort by</p>
                                         <p className='font-bold'>Number</p>
@@ -98,7 +98,7 @@ export const Home = () => {
                                         )}
                                     </div>
                                 </div>
-                                <div className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg cursor-pointer  ${sort.number == 2 ? 'bg-white' : ''}`} onClick={() => changeSort(2, !sort.type)}>
+                                <div className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer  ${sort.number == 2 ? 'bg-white' : 'blur-[0.6px]'}`} onClick={() => changeSort(2, !sort.type)}>
                                     <div className="leading-6">
                                         <p className='text-slate-400'>Sort by</p>
                                         <p className='font-bold'>Alphabet</p>
@@ -111,7 +111,7 @@ export const Home = () => {
                                         )}
                                     </div>
                                 </div>
-                                <div className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg cursor-pointer  ${sort.number == 3 ? 'bg-white' : ''}`} onClick={() => changeSort(3, !sort.type)}>
+                                <div className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer  ${sort.number == 3 ? 'bg-white' : 'blur-[0.6px]'}`} onClick={() => changeSort(3, !sort.type)}>
                                     <div className="leading-6">
                                         <p className='text-slate-400'>Sort by</p>
                                         <p className='font-bold'>Total Ayah</p>
@@ -152,16 +152,16 @@ export const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="my-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                        <div className="my-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
                             {data.map((item, index) => {
                                 return(
-                                    <div className='bg-white h-32 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base' key={item.number}>
+                                    <div className='bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm' key={item.number}>
                                         <div className='flex justify-between items-center'>
                                             <span>{index + 1}</span>
                                             <i className="fa-solid fa-star text-secondary"></i>
                                         </div>
                                         <div className=''>
-                                            <p className='font-semibold tracking-wide'>{item.asma.id.short}</p>
+                                            <p className='font-semibold xl:font-bold tracking-wide'>{item.asma.id.short}</p>
                                             <p className='text-gray-400'>{item.asma.translation.id}</p>
                                         </div>
                                     </div>
