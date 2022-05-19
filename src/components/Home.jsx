@@ -4,6 +4,7 @@ import axios from 'axios'
 export const Home = () => {
     const [data, setData] = useState(undefined)
     const [menu, setMenu] = useState(false)
+    // type false if ascending and true if descending
     const [sort, setSort] = useState({number:1, type:false})
 
     const getData = () => {
@@ -17,8 +18,33 @@ export const Home = () => {
     const changeSort = (number, type) => {
         if(number != sort.number){
             setSort({number:number, type:false})
+            type = false
         }else{
             setSort({number:number, type:type})
+        }
+
+        switch(true){
+            case number == 1 && !type:
+                setData(data.sort((a,b) => a.number - b.number))
+                break
+            case number == 1 && type:
+                setData(data.sort((a,b) => b.number - a.number))
+                break
+            case number == 2 && !type:
+                setData(data.sort((a,b) => a.asma.id.short.localeCompare(b.asma.id.short)))
+                break
+            case number == 2 && type:
+                setData(data.sort((a,b) => b.asma.id.short.localeCompare(a.asma.id.short)))
+                break
+            case number == 3 && !type:
+                setData(data.sort((a,b) => a.ayahCount - b.ayahCount))
+                break
+            case number == 3 && type:
+                setData(data.sort((a,b) => b.ayahCount - a.ayahCount))
+                break
+            default:
+                alert("Error Sorting...")
+                break
         }
     }
 
