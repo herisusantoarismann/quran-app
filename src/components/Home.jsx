@@ -62,27 +62,35 @@ export const Home = () => {
                         <span className='text-lg font-bold text-center text-white tracking-widest my-4'>About</span>
                         <span className='text-lg font-bold text-center text-white tracking-widest my-4'>Contact</span>
                     </div>
-                    <div className='mt-4 mx-6 lg:px-16 flex justify-between items-center'>
-                        <div className="">
+                    <div className="h-full absolute hidden lg:flex p-7 bg-slate-50/50 flex-col rounded-r-xl text-center">
+                        <div className="bg-secondary rounded-full p-2">
+                            <img src="images/icon.png" alt="" className='w-6 cursor-pointer'/>
+                        </div>
+                        <div className='mt-12'>
+                            <i className="fa-solid fa-book-open text-secondary cursor-pointer duration-150 hover:text-secondary"></i>
+                        </div>
+                        <div className='mt-12'>
+                            <i className="fa-solid fa-volume-high cursor-pointer duration-150 hover:text-secondary"></i>
+                        </div>
+                    </div>
+                    <div className='mt-4 mx-6 lg:px-6 flex justify-between items-center'>
+                        <div className="lg:invisible">
                             <h1>X</h1>
                         </div>
-                        {/* <div className="w-6/10 justify-between align-center">
-                            <h1>Quran</h1>
-                            <div>
-                                <input type="text" placeholder='Search'/>
-                            </div>
-                        </div> */}
                         <div className="flex">
                             <div className="mr-4 border-2 border-gray-400 rounded-lg md:rounded-full">
                                 <input className='w-48 px-2 sm:px-3 sm:py-1 md:p-4 md:py-2 text-sm outline-none rounded-lg md:rounded-full' type="text" placeholder='Search'/>
                                 <i className="fa-solid fa-magnifying-glass mr-2"></i>
                             </div>
-                            <div className='relative'>
+                            <div className='relative lg:hidden'>
                                 <i className="fa-solid fa-bars absolute top-2/4 transform -translate-y-2/4"  onClick={() => setMenu(true)}></i>
+                            </div>
+                            <div className='hidden lg:flex items-center'>
+                                <button className='bg-secondary py-2 px-5 text-white rounded-full'>Support</button>
                             </div>
                         </div>
                     </div>
-                    <div className="h-5/6 bg-primary my-6 mx-4 lg:mx-12 p-4 lg:p-6 rounded-lg overflow-scroll">
+                    <div className="h-5/6 bg-primary my-6 mx-4 lg:ml-24 lg:mr-12 p-4 lg:p-6 rounded-lg lg:rounded-3xl overflow-y-auto">
                         <div className="flex justify-end mt-2 mb-8 text-xs md:text-sm">
                             <div className="hidden sm:flex gap-4">
                                 <div className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer ${sort.number == 1 ? 'bg-white' : 'blur-[0.6px]'}`} onClick={() => changeSort(1, !sort.type)}>
@@ -152,10 +160,10 @@ export const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="my-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                        <div className="my-2 lg:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
                             {data.map((item, index) => {
                                 return(
-                                    <div className='bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm' key={item.number}>
+                                    <div className='bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3' key={item.number}>
                                         <div className='flex justify-between items-center'>
                                             <span>{index + 1}</span>
                                             <i className="fa-solid fa-star text-secondary"></i>
