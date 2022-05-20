@@ -3,7 +3,6 @@ import { Link, useOutletContext } from "react-router-dom";
 
 export const ListBox = () => {
   const [data, setData] = useOutletContext();
-  const [id, setId] = useOutletContext();
   // type false if ascending and true if descending
   const [sort, setSort] = useState({ number: 1, type: false });
 
@@ -16,26 +15,26 @@ export const ListBox = () => {
     }
 
     switch (true) {
-      case number == 1 && !type:
+      case number === 1 && !type:
         setData(data.sort((a, b) => a.number - b.number));
         break;
-      case number == 1 && type:
+      case number === 1 && type:
         setData(data.sort((a, b) => b.number - a.number));
         break;
-      case number == 2 && !type:
+      case number === 2 && !type:
         setData(
           data.sort((a, b) => a.asma.id.short.localeCompare(b.asma.id.short))
         );
         break;
-      case number == 2 && type:
+      case number === 2 && type:
         setData(
           data.sort((a, b) => b.asma.id.short.localeCompare(a.asma.id.short))
         );
         break;
-      case number == 3 && !type:
+      case number === 3 && !type:
         setData(data.sort((a, b) => a.ayahCount - b.ayahCount));
         break;
-      case number == 3 && type:
+      case number === 3 && type:
         setData(data.sort((a, b) => b.ayahCount - a.ayahCount));
         break;
       default:
@@ -148,11 +147,10 @@ export const ListBox = () => {
       <div className="my-2 lg:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
         {data.map((item, index) => {
           return (
-            <Link to={`/${item.number}`}>
+            <Link to={`/${item.number}`} key={item.number}>
               <div
                 className="bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3"
                 key={item.number}
-                onClick={() => setId(item.number)}
               >
                 <div className="flex justify-between items-center">
                   <span>{index + 1}</span>
