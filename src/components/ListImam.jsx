@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import axios from "axios";
+import { useOutletContext } from "react-router-dom";
 
 export const ListImam = () => {
-  const [data, setData] = useOutletContext();
+  const [imam, setImam] = useOutletContext();
   // type false if ascending and true if descending
   const [sort, setSort] = useState(false);
 
   const changeSort = () => {
     if (sort) {
-      setData(data.sort((a, b) => a.name - b.name));
+      setImam(imam.sort((a, b) => a.name - b.name));
     } else {
-      setData(data.sort((a, b) => b.name - a.name));
+      setImam(imam.sort((a, b) => b.name - a.name));
     }
+  };
+
+  const getImam = () => {
+    axios.get(`https://quran-endpoint.vercel.app/imam`).then((res) => {
+      const imam = res.data.data;
+      setImam(imam);
+    });
   };
 
   useEffect(() => {
     document.title = "Quran | Imam List";
+    getImam();
   }, []);
 
   return (
@@ -23,7 +32,7 @@ export const ListImam = () => {
       <div className="flex justify-end mt-2 mb-8 text-xs md:text-sm">
         <div className="hidden sm:flex gap-4">
           <div
-            className="relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer"
+            className="relative p-2 w-24 bg-white md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer"
             onClick={() => changeSort()}
           >
             <div className="leading-6">
@@ -54,7 +63,7 @@ export const ListImam = () => {
         </div>
       </div>
       <div className="my-2 lg:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
-        {data.map((item, index) => {
+        {imam.map((item, index) => {
           return (
             <div
               className="bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3"
@@ -64,11 +73,9 @@ export const ListImam = () => {
                 <span>{index + 1}</span>
                 <i className="fa-solid fa-star text-secondary"></i>
               </div>
-              <div className="">
-                <p className="font-semibold xl:font-bold tracking-wide">
-                  {item.name}
-                </p>
-              </div>
+              <p className="font-semibold text-xs leading-3 xl:font-bold tracking-wide">
+                {item.name}
+              </p>
             </div>
           );
         })}

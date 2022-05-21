@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ListBox } from "./ListBox";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export const Home = () => {
   const [data, setData] = useState(undefined);
@@ -53,7 +53,9 @@ export const Home = () => {
               <i className="fa-solid fa-book-open text-secondary cursor-pointer duration-150 hover:text-secondary"></i>
             </div>
             <div className="mt-12">
-              <i className="fa-solid fa-volume-high cursor-pointer duration-150 hover:text-secondary"></i>
+              <Link to={"/imam"}>
+                <i className="fa-solid fa-volume-high cursor-pointer duration-150 hover:text-secondary"></i>
+              </Link>
             </div>
           </div>
           <div className="mt-4 mx-6 lg:px-6 flex justify-between items-center">
@@ -65,7 +67,7 @@ export const Home = () => {
             <div className="flex">
               <div className="mr-4 border-2 border-gray-400 rounded-lg md:rounded-full">
                 <input
-                  className="w-48 px-2 sm:px-3 sm:py-1 md:p-4 md:py-2 text-sm outline-none rounded-lg md:rounded-full"
+                  className="w-24 lg:w-48 px-2 sm:px-3 sm:py-1 md:p-4 md:py-2 text-sm outline-none rounded-lg md:rounded-full"
                   type="text"
                   placeholder="Search"
                 />
