@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ListBox } from "./ListBox";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 export const Home = () => {
   const [data, setData] = useState(undefined);
   const [menu, setMenu] = useState(false);
+  const location = useLocation();
 
   const getData = () => {
     axios.get(`https://quran-endpoint.vercel.app/quran`).then((res) => {
@@ -50,11 +50,21 @@ export const Home = () => {
               />
             </div>
             <div className="mt-12">
-              <i className="fa-solid fa-book-open text-secondary cursor-pointer duration-150 hover:text-secondary"></i>
+              <Link to={"/"}>
+                <i
+                  className={`fa-solid fa-book-open cursor-pointer duration-150 hover:text-secondary ${
+                    location.pathname !== "/imam" ? "text-secondary" : ""
+                  }`}
+                ></i>
+              </Link>
             </div>
             <div className="mt-12">
               <Link to={"/imam"}>
-                <i className="fa-solid fa-volume-high cursor-pointer duration-150 hover:text-secondary"></i>
+                <i
+                  className={`fa-solid fa-volume-high cursor-pointer duration-150 hover:text-secondary ${
+                    location.pathname === "/imam" ? "text-secondary" : ""
+                  }`}
+                ></i>
               </Link>
             </div>
           </div>

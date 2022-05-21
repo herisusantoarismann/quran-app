@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useOutletContext } from "react-router-dom";
 
 export const ListImam = () => {
   const [imam, setImam] = useState(undefined);
