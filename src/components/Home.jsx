@@ -57,8 +57,10 @@ export const Home = () => {
             </div>
           </div>
           <div className="mt-4 mx-6 lg:px-6 flex justify-between items-center">
-            <div className="lg:invisible">
-              <h1>X</h1>
+            <div className="lg:ml-20">
+              <h1 className="font-bold text-secondary text-2xl tracking-wide">
+                Quran
+              </h1>
             </div>
             <div className="flex">
               <div className="mr-4 border-2 border-gray-400 rounded-lg md:rounded-full">

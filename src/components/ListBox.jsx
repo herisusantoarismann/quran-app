@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 
 export const ListBox = () => {
@@ -42,6 +42,10 @@ export const ListBox = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    document.title = "Quran | Surah List";
+  }, []);
 
   return (
     <>
