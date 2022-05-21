@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const ListBox = () => {
-  const [data, setData] = useOutletContext();
+  const [data, setData] = useState();
   // type false if ascending and true if descending
   const [sort, setSort] = useState({ number: 1, type: false });
+
+  const getData = () => {
+    axios.get(`https://quran-endpoint.vercel.app/quran`).then((res) => {
+      const quran = res.data.data;
+      setData(quran);
+    });
+  };
 
   const changeSort = (number, type) => {
     if (number != sort.number) {
@@ -45,6 +53,7 @@ export const ListBox = () => {
 
   useEffect(() => {
     document.title = "Quran | Surah List";
+    getData();
   }, []);
 
   return (
@@ -149,27 +158,35 @@ export const ListBox = () => {
         </div>
       </div>
       <div className="my-2 lg:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
-        {data.map((item, index) => {
-          return (
-            <Link to={`/${item.number}`} key={item.number}>
-              <div
-                className="bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3"
-                key={item.number}
-              >
-                <div className="flex justify-between items-center">
-                  <span>{index + 1}</span>
-                  <i className="fa-solid fa-star text-secondary"></i>
-                </div>
-                <div className="">
-                  <p className="font-semibold xl:font-bold tracking-wide">
-                    {item.asma.en.short}
-                  </p>
-                  <p className="text-gray-400">{item.asma.translation.id}</p>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
+        {data !== undefined ? (
+          <>
+            {data.map((item, index) => {
+              return (
+                <Link to={`/${item.number}`} key={item.number}>
+                  <div
+                    className="bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3"
+                    key={item.number}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span>{index + 1}</span>
+                      <i className="fa-solid fa-star text-secondary"></i>
+                    </div>
+                    <div className="">
+                      <p className="font-semibold xl:font-bold tracking-wide">
+                        {item.asma.en.short}
+                      </p>
+                      <p className="text-gray-400">
+                        {item.asma.translation.id}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
