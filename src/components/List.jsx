@@ -7,7 +7,11 @@ export const List = () => {
   const [surah, setSurah] = useState(undefined);
   const [imam, setImam] = useState(undefined);
   const [imamMenu, setImamMenu] = useState(false);
-  const [audio, setAudio] = useState({ data: new Audio(), currentTime: 0 });
+  const [audio, setAudio] = useState({
+    data: new Audio(),
+    currentTime: 0,
+  });
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const getImam = () => {
     axios.get(`https://quran-endpoint.vercel.app/imam`).then((res) => {
@@ -28,16 +32,29 @@ export const List = () => {
     audio.data.src = url;
     audio.data.currentTime = audio.currentTime;
     audio.data.play();
+    setIsPlaying(true);
+    audio.data.onloadedmetadata = () => {
+      setTimeout(() => {
+        setIsPlaying(false);
+        stopSound();
+        console.log("YA");
+      }, Math.floor(audio.data.duration) * 1000);
+    };
   };
 
   const pauseSound = () => {
     audio.data.pause();
+    setIsPlaying(false);
     audio.currentTime = audio.data.currentTime;
   };
 
   const stopSound = () => {
     audio.data.pause();
-    audio.data.currentTime = 0;
+    audio.currentTime = 0;
+  };
+
+  const changeVolume = (e) => {
+    audio.data.volume = e.target.value / 100;
   };
 
   useEffect(() => {
@@ -111,15 +128,24 @@ export const List = () => {
                         {item.translation.en}
                       </p>
                     </div>
-                    <div className="text-xs text-right mt-3 flex justify-between mx-4">
-                      <i
-                        className="fa-solid fa-play"
-                        onClick={() => playSound(index)}
-                      ></i>
-                      <i
-                        className="fa-solid fa-pause"
-                        onClick={() => pauseSound()}
-                      ></i>
+                    <div className="text-xs text-right mt-3 flex justify-between items-center mx-4">
+                      <div>
+                        {!isPlaying ? (
+                          <i
+                            className="fa-solid fa-play"
+                            onClick={() => playSound(index)}
+                          ></i>
+                        ) : (
+                          <i
+                            className="fa-solid fa-pause"
+                            onClick={() => pauseSound()}
+                          ></i>
+                        )}
+                      </div>
+                      <div className="text-center">
+                        <p>Volume</p>
+                        <input type="range" onChange={(e) => changeVolume(e)} />
+                      </div>
                       <i
                         className="fa-solid fa-stop"
                         onClick={() => stopSound()}
