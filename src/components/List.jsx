@@ -28,11 +28,11 @@ export const List = () => {
       )
       .then((res) => {
         setSurah(res.data.data);
+        document.title = "Quran | " + res.data.data.asma.en.short;
       });
   };
 
   const playSound = (id) => {
-    audioRef.current.classList.remove("fa-play");
     const url = surah.ayahs[id].audio.url;
     audio.data.src = url;
     audio.data.currentTime = audio.currentTime;
@@ -146,6 +146,9 @@ export const List = () => {
                 <span className="flex justify-center text-[10px] sm:text-sm gap-2">
                   <p>{surah.type.en}</p> &#9679; <p>{surah.ayahCount}</p>
                 </span>
+                <p className="text-right sm:text-sm lg:text-base">
+                  Voice by {imamList[imam - 1].name}
+                </p>
               </div>
               <div className="text-sm mt-4">
                 {surah.ayahs.map((item, index) => {
