@@ -33,12 +33,9 @@ export const List = () => {
     audio.data.currentTime = audio.currentTime;
     audio.data.play();
     setIsPlaying(true);
-    audio.data.onloadedmetadata = () => {
-      setTimeout(() => {
-        setIsPlaying(false);
-        stopSound();
-        console.log("YA");
-      }, Math.floor(audio.data.duration) * 1000);
+    audio.data.onended = () => {
+      setIsPlaying(false);
+      audio.data.currentTime = 0;
     };
   };
 
@@ -130,7 +127,8 @@ export const List = () => {
                     </div>
                     <div className="text-xs text-right mt-3 flex justify-between items-center mx-4">
                       <div>
-                        {!isPlaying ? (
+                        <audio src={item.audio.url}></audio>
+                        {audio.data.paused ? (
                           <i
                             className="fa-solid fa-play"
                             onClick={() => playSound(index)}
@@ -143,7 +141,7 @@ export const List = () => {
                         )}
                       </div>
                       <div className="text-center">
-                        <p>Volume</p>
+                        <p className="text-[10px]">Volume</p>
                         <input type="range" onChange={(e) => changeVolume(e)} />
                       </div>
                       <i
