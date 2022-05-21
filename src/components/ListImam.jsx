@@ -8,9 +8,9 @@ export const ListImam = () => {
 
   const changeSort = () => {
     if (sort) {
-      setData(data.sort((a, b) => a.number - b.number));
+      setData(data.sort((a, b) => a.name - b.name));
     } else {
-      setData(data.sort((a, b) => b.number - a.number));
+      setData(data.sort((a, b) => b.name - a.name));
     }
   };
 
@@ -41,39 +41,11 @@ export const ListImam = () => {
         </div>
         <div className="flex justify-end sm:hidden">
           <div
-            className={`p-1 w-20 flex items-center gap-1 cursor-pointer ${
-              sort.number == 1 ? "text-black" : "text-slate-400"
-            }`}
-            onClick={() => changeSort(1, !sort.type)}
-          >
-            <p>Number</p>
-            {sort.type && sort.number == 1 ? (
-              <i className="fa-solid fa-arrow-up"></i>
-            ) : (
-              <i className="fa-solid fa-arrow-down"></i>
-            )}
-          </div>
-          <div
-            className={`p-1 w-20 flex items-center gap-1 cursor-pointer ${
-              sort.number == 2 ? "text-black" : "text-slate-400"
-            }`}
-            onClick={() => changeSort(2, !sort.type)}
+            className="p-1 w-20 flex items-center gap-1 cursor-pointer"
+            onClick={() => changeSort()}
           >
             <p>Alphabet</p>
-            {sort.type && sort.number == 2 ? (
-              <i className="fa-solid fa-arrow-up"></i>
-            ) : (
-              <i className="fa-solid fa-arrow-down"></i>
-            )}
-          </div>
-          <div
-            className={`p-1 w-20 flex items-center gap-1 cursor-pointer ${
-              sort.number == 3 ? "text-black" : "text-slate-400"
-            }`}
-            onClick={() => changeSort(3, !sort.type)}
-          >
-            <p>Total Ayat</p>
-            {sort.type && sort.number == 3 ? (
+            {sort ? (
               <i className="fa-solid fa-arrow-up"></i>
             ) : (
               <i className="fa-solid fa-arrow-down"></i>
@@ -84,23 +56,20 @@ export const ListImam = () => {
       <div className="my-2 lg:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
         {data.map((item, index) => {
           return (
-            <Link to={`/${item.number}`} key={item.number}>
-              <div
-                className="bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3"
-                key={item.number}
-              >
-                <div className="flex justify-between items-center">
-                  <span>{index + 1}</span>
-                  <i className="fa-solid fa-star text-secondary"></i>
-                </div>
-                <div className="">
-                  <p className="font-semibold xl:font-bold tracking-wide">
-                    {item.asma.en.short}
-                  </p>
-                  <p className="text-gray-400">{item.asma.translation.id}</p>
-                </div>
+            <div
+              className="bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3"
+              key={item.id}
+            >
+              <div className="flex justify-between items-center">
+                <span>{index + 1}</span>
+                <i className="fa-solid fa-star text-secondary"></i>
               </div>
-            </Link>
+              <div className="">
+                <p className="font-semibold xl:font-bold tracking-wide">
+                  {item.name}
+                </p>
+              </div>
+            </div>
           );
         })}
       </div>
