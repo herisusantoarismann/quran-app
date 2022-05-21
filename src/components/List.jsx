@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -12,6 +12,7 @@ export const List = () => {
     currentTime: 0,
   });
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef();
 
   const getImam = () => {
     axios.get(`https://quran-endpoint.vercel.app/imam`).then((res) => {
@@ -28,9 +29,11 @@ export const List = () => {
   };
 
   const playSound = (id) => {
+    audioRef.current.classList.remove("fa-play");
     const url = surah.ayahs[id].audio.url;
     audio.data.src = url;
     audio.data.currentTime = audio.currentTime;
+    audio.data.volume = 0.5;
     audio.data.play();
     setIsPlaying(true);
     audio.data.onended = () => {
@@ -91,7 +94,7 @@ export const List = () => {
       <div className="">
         {surah !== undefined ? (
           <div className="flex justify-center flex-col z-10">
-            <div className="my-2 text-xs text-white flex justify-end">
+            <div className="my-2 text-xs sm:text-sm text-white flex justify-end">
               <button
                 className="py-1 px-2 bg-secondary rounded-md"
                 onClick={() => setImamMenu(!imamMenu)}
@@ -103,9 +106,13 @@ export const List = () => {
               <p className="w-fit mx-auto py-0.5 px-2.5 bg-white text-black rounded-full">
                 {surah.number}
               </p>
-              <p className="font-bold">{surah.asma.en.short}</p>
-              <p className="text-xs">{surah.asma.translation.en}</p>
-              <span className="flex justify-center text-[10px] gap-2">
+              <p className="font-bold sm:text-xl sm:tracking-widest">
+                {surah.asma.en.short}
+              </p>
+              <p className="text-xs sm:text-base">
+                {surah.asma.translation.en}
+              </p>
+              <span className="flex justify-center text-[10px] sm:text-sm gap-2">
                 <p>{surah.type.en}</p> &#9679; <p>{surah.ayahCount}</p>
               </span>
             </div>
@@ -120,29 +127,33 @@ export const List = () => {
                       <p className="text-[10px]">{index + 1}</p>
                     </div>
                     <div className="mt-2">
-                      <p className="text-right text-lg">{item.text.ar}</p>
-                      <p className="text-xs text-left mt-2 text-justify">
+                      <p className="text-right text-lg sm:text-xl">
+                        {item.text.ar}
+                      </p>
+                      <p className="text-xs text-left mt-2 text-justify sm:text-sm">
                         {item.translation.en}
                       </p>
                     </div>
                     <div className="text-xs text-right mt-3 flex justify-between items-center mx-4">
                       <div>
                         <audio src={item.audio.url}></audio>
-                        {audio.data.paused ? (
-                          <i
-                            className="fa-solid fa-play"
-                            onClick={() => playSound(index)}
-                          ></i>
-                        ) : (
-                          <i
-                            className="fa-solid fa-pause"
-                            onClick={() => pauseSound()}
-                          ></i>
-                        )}
+                        <i
+                          ref={audioRef}
+                          className="fa-solid fa-play"
+                          onClick={() =>
+                            isPlaying ? pauseSound() : playSound(index)
+                          }
+                          data-boolean="false"
+                        ></i>
                       </div>
-                      <div className="text-center">
-                        <p className="text-[10px]">Volume</p>
-                        <input type="range" onChange={(e) => changeVolume(e)} />
+                      <div className="text-center sm:w-3/4">
+                        <p className="text-[10px] sm:text-xs">Volume</p>
+                        <input
+                          type="range"
+                          className="sm:w-full"
+                          onChange={(e) => changeVolume(e)}
+                          defaultValue={50}
+                        />
                       </div>
                       <i
                         className="fa-solid fa-stop"
