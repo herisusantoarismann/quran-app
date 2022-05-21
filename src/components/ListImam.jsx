@@ -73,7 +73,7 @@ export const ListImam = () => {
                 <span>{index + 1}</span>
                 <i className="fa-solid fa-star text-secondary"></i>
               </div>
-              <p className="font-semibold text-xs leading-3 xl:font-bold tracking-wide">
+              <p className="font-semibold text-xs leading-3 lg:text-sm xl:font-bold tracking-wide">
                 {item.name}
               </p>
             </div>
