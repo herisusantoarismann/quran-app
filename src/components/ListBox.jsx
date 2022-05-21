@@ -158,7 +158,7 @@ export const ListBox = () => {
                 </div>
                 <div className="">
                   <p className="font-semibold xl:font-bold tracking-wide">
-                    {item.asma.id.short}
+                    {item.asma.en.short}
                   </p>
                   <p className="text-gray-400">{item.asma.translation.id}</p>
                 </div>
