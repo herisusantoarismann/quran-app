@@ -23,7 +23,7 @@ export const Home = () => {
       {data != undefined ? (
         <>
           <div
-            className={`w-2/4 h-full fixed right-0 bg-secondary flex justify-center items-center flex-col z-10 ${
+            className={`w-2/4 h-full fixed right-0 bg-secondary flex justify-center items-center flex-col z-30 ${
               menu ? "" : "transform translate-x-full"
             } duration-500`}
           >
