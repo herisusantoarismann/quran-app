@@ -77,8 +77,48 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <div className="h-5/6 bg-primary my-6 mx-4 lg:ml-24 lg:mr-12 p-4 lg:p-6 rounded-lg lg:rounded-3xl overflow-y-auto">
-        <Outlet />
+      <div className="h-5/6 flex flex-col-reverse">
+        <div className="h-full w-11/12 bg-primary my-6 mx-4 lg:ml-24 lg:mr-12 p-4 lg:p-6 rounded-lg lg:rounded-3xl overflow-y-auto">
+          <Outlet />
+        </div>
+        <div className="hidden w-1/5 px-12 py-6 flex justify-around flex-col">
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="">Salam,</h3>
+              <h2>Heri</h2>
+            </div>
+            <img
+              src="./images/Img_Icon.png"
+              alt="image-user"
+              className="w-2/5 h-4/5"
+            />
+          </div>
+          <div>
+            <h1>Last Read</h1>
+          </div>
+        </div>
+        <div className="px-6 pt-3 flex justify-around text-sm">
+          <div className="">
+            <img
+              src="./images/Img_Icon.png"
+              alt="image-user"
+              className="w-16 h-16"
+            />
+            <p className="text-xs">
+              Salam, <b>Heri</b>{" "}
+            </p>
+          </div>
+          <div className="relative text-center flex justify-between flex-col">
+            <i className="fa-solid fa-headphones absolute text-3xl top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 opacity-30"></i>
+            <h1>Last Read</h1>
+            <p className="">Al-Fatihah (1)</p>
+          </div>
+          <div className="relative text-center flex justify-between flex-col">
+            <i className="fa-solid fa-book-open absolute text-3xl top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 opacity-30"></i>
+            <h1>Last Read</h1>
+            <p className="">Al-Fatihah (1)</p>
+          </div>
+        </div>
       </div>
       <div className="text-center text-sm font-bold text-slate-400">
         &copy; Copyright {new Date().getFullYear()}, All Right Reversed.
