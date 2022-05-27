@@ -77,11 +77,11 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <div className="h-5/6 flex flex-col-reverse">
+      <div className="h-5/6 flex flex-col-reverse lg:flex-row">
         <div className="h-full w-11/12 bg-primary my-6 mx-4 lg:ml-24 lg:mr-12 p-4 lg:p-6 rounded-lg lg:rounded-3xl overflow-y-auto">
           <Outlet />
         </div>
-        <div className="hidden w-1/5 px-12 py-6 flex justify-around flex-col">
+        <div className="hidden lg:flex w-1/5 px-12 py-6 justify-around flex-col">
           <div className="flex justify-between items-center">
             <div>
               <h3 className="">Salam,</h3>
@@ -90,14 +90,21 @@ export const Home = () => {
             <img
               src="./images/Img_Icon.png"
               alt="image-user"
-              className="w-2/5 h-4/5"
+              className="w-4/5 h-4/5"
             />
           </div>
           <div>
+            <i className="fa-solid fa-headphones text-3xl"></i>
             <h1>Last Read</h1>
+            <p className="">Al-Fatihah (1)</p>
+          </div>
+          <div>
+            <i className="fa-solid fa-book-open text-3xl"></i>
+            <h1>Last Read</h1>
+            <p className="">Al-Fatihah (1)</p>
           </div>
         </div>
-        <div className="px-6 pt-3 flex justify-around text-sm">
+        <div className="px-6 pt-3 flex justify-around text-sm lg:hidden">
           <div className="">
             <img
               src="./images/Img_Icon.png"
@@ -120,7 +127,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <div className="text-center text-sm font-bold text-slate-400">
+      <div className="text-center text-xs md:text-sm font-bold text-slate-400 fixed bottom-12 left-2/4 -translate-x-2/4">
         &copy; Copyright {new Date().getFullYear()}, All Right Reversed.
       </div>
     </div>
