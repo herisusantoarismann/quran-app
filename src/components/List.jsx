@@ -43,6 +43,10 @@ export const List = () => {
       setIsPlaying(false);
       audio.data.currentTime = 0;
     };
+    localStorage.setItem(
+      "quran",
+      JSON.stringify({ ayat: id + 1, surah: surah.asma.en.short })
+    );
   };
 
   const pauseSound = () => {

@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 export const Home = () => {
   const [menu, setMenu] = useState(false);
+  const [recent, setRecent] = useState(null);
   const location = useLocation();
+
+  useEffect(() => {
+    let data = JSON.parse(localStorage.getItem("quran"));
+    setRecent(data);
+    console.log(recent);
+  }, []);
 
   return (
     <div className="w-screen h-screen overflow-x-hidden">
@@ -99,8 +106,13 @@ export const Home = () => {
               <h1 className="font-bold text-secondary uppercase tracking-widest">
                 Last Read
               </h1>
-              <p className="mt-4 font-bold text-lg">Al-Fatihah</p>
-              <p className="text-slate-500">Ayah no : 1</p>
+              {recent !== null ? (
+                <>
+                  <p className="mt-4 font-bold text-lg">{recent.surah}</p>
+                </>
+              ) : (
+                <p className="mt-4 font-bold text-lg">Not Read</p>
+              )}
             </div>
             <i className="fa-solid fa-book-open text-5xl text-primary"></i>
           </div>
@@ -108,10 +120,16 @@ export const Home = () => {
           <div className="flex justify-between items-center">
             <div className="">
               <h1 className="font-bold text-secondary uppercase tracking-widest">
-                Last Read
+                Last Listened
               </h1>
-              <p className="mt-4 font-bold text-lg">Al-Fatihah</p>
-              <p className="text-slate-500">Ayah no : 1</p>
+              {recent !== null ? (
+                <>
+                  <p className="mt-4 font-bold text-lg">{recent.surah}</p>
+                  <p className="text-slate-500">Ayah no : {recent.ayat}</p>
+                </>
+              ) : (
+                <p className="mt-4 font-bold text-lg">Not Listened</p>
+              )}
             </div>
             <i className="fa-solid fa-headphones text-5xl text-primary"></i>
           </div>
