@@ -81,27 +81,47 @@ export const Home = () => {
         <div className="h-full w-11/12 bg-primary my-6 mx-4 lg:ml-24 lg:mr-12 p-4 lg:p-6 rounded-lg lg:rounded-3xl overflow-y-auto">
           <Outlet />
         </div>
-        <div className="hidden lg:flex w-1/5 px-12 py-6 justify-around flex-col">
+        <div className="hidden lg:flex w-1/5 pr-12 py-16 justify-between flex-col">
           <div className="flex justify-between items-center">
-            <div>
+            <div className="">
               <h3 className="">Salam,</h3>
-              <h2>Heri</h2>
+              <h2 className="font-bold">Heri</h2>
             </div>
             <img
               src="./images/Img_Icon.png"
               alt="image-user"
-              className="w-4/5 h-4/5"
+              className="w-2/5"
             />
           </div>
-          <div>
-            <i className="fa-solid fa-headphones text-3xl"></i>
-            <h1>Last Read</h1>
-            <p className="">Al-Fatihah (1)</p>
+          <hr />
+          <div className="flex justify-between items-center">
+            <div className="">
+              <h1 className="font-extrabold text-secondary uppercase tracking-widest">
+                Last Read
+              </h1>
+              <p className="mt-4 font-bold text-lg">Al-Fatihah</p>
+              <p className="text-slate-500">Ayah no : 1</p>
+            </div>
+            <i className="fa-solid fa-book-open text-5xl text-primary"></i>
           </div>
-          <div>
-            <i className="fa-solid fa-book-open text-3xl"></i>
-            <h1>Last Read</h1>
-            <p className="">Al-Fatihah (1)</p>
+          <hr />
+          <div className="flex justify-between items-center">
+            <div className="">
+              <h1 className="font-extrabold text-secondary uppercase tracking-widest">
+                Last Read
+              </h1>
+              <p className="mt-4 font-bold text-lg">Al-Fatihah</p>
+              <p className="text-slate-500">Ayah no : 1</p>
+            </div>
+            <i className="fa-solid fa-headphones text-5xl text-primary"></i>
+          </div>
+          <div className="bg-secondary px-6 py-4 text-white rounded-xl font-semibold">
+            <h1 className="text-slate-200 opacity-70">Quote of the day</h1>
+            <p className="pt-4 ">
+              Do not be friend someone who cannot restrain their anger or
+              control their desire. Nor, someone who is a liar or who is greedy
+              for this world
+            </p>
           </div>
         </div>
         <div className="px-6 pt-3 flex justify-around text-sm lg:hidden">
@@ -118,7 +138,7 @@ export const Home = () => {
           <div className="relative text-center flex justify-between flex-col">
             <i className="fa-solid fa-headphones absolute text-3xl top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 opacity-30"></i>
             <h1>Last Read</h1>
-            <p className="">Al-Fatihah (1)</p>
+            <p className="">Al-Fatihah</p>
           </div>
           <div className="relative text-center flex justify-between flex-col">
             <i className="fa-solid fa-book-open absolute text-3xl top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 opacity-30"></i>
