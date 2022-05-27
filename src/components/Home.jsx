@@ -96,7 +96,7 @@ export const Home = () => {
           <hr />
           <div className="flex justify-between items-center">
             <div className="">
-              <h1 className="font-extrabold text-secondary uppercase tracking-widest">
+              <h1 className="font-bold text-secondary uppercase tracking-widest">
                 Last Read
               </h1>
               <p className="mt-4 font-bold text-lg">Al-Fatihah</p>
@@ -107,7 +107,7 @@ export const Home = () => {
           <hr />
           <div className="flex justify-between items-center">
             <div className="">
-              <h1 className="font-extrabold text-secondary uppercase tracking-widest">
+              <h1 className="font-bold text-secondary uppercase tracking-widest">
                 Last Read
               </h1>
               <p className="mt-4 font-bold text-lg">Al-Fatihah</p>
