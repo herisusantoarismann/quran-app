@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ContentItem } from "./ContentItem";
+import { ContentQuote } from "./ContentQuote";
 import { ContentUser } from "./ContentUser";
 
 export const ContentRight = () => {
@@ -26,14 +27,11 @@ export const ContentRight = () => {
         icon={"fa-solid fa-headphones"}
         child={true}
       />
-      <div className="bg-secondary px-6 py-4 text-white rounded-xl font-semibold">
-        <h1 className="text-slate-200 opacity-70">Quote of the day</h1>
-        <p className="pt-4 ">
-          Do not be friend someone who cannot restrain their anger or control
-          their desire. Nor, someone who is a liar or who is greedy for this
-          world
-        </p>
-      </div>
+      <ContentQuote
+        quote={
+          "Do not be friend someone who cannot restrain their anger or control their desire. Nor, someone who is a liar or who is greedy for this world"
+        }
+      />
     </div>
   );
 };
