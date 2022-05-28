@@ -13,10 +13,10 @@ export const ImamContainer = () => {
   const changeSort = (number, { type }) => {
     if (type) {
       setImam(imam.sort((a, b) => a.name.localeCompare(b.name)));
-      setSort({ type: !type });
+      setSort({ number: 1, type: !type });
     } else {
       setImam(imam.sort((a, b) => b.name.localeCompare(a.name)));
-      setSort({ type: !type });
+      setSort({ number: 1, type: !type });
     }
   };
 

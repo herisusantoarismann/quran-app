@@ -11,7 +11,7 @@ export const SortItem = ({ changeSort, sort, title, index = null }) => {
         <p className="font-bold hidden sm:block">{title}</p>
       </div>
       <div className="absolute right-3 bottom-3">
-        {sort ? (
+        {sort.type && sort.number === index ? (
           <i className="fa-solid fa-arrow-up"></i>
         ) : (
           <i className="fa-solid fa-arrow-down"></i>
