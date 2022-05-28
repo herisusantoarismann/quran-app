@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Menu } from "./Menu/Menu";
+import { Navbar } from "./Navbar/Navbar";
 import { Sidebar } from "./Sidebar/Sidebar";
 
 export const Home = () => {
@@ -16,34 +17,7 @@ export const Home = () => {
     <div className="w-screen h-screen overflow-x-hidden">
       <Menu setMenu={setMenu} menu={menu} />
       <Sidebar />
-      <div className="mt-4 mx-6 lg:px-6 flex justify-between items-center">
-        <div className="lg:ml-20">
-          <h1 className="font-bold text-secondary text-2xl tracking-wide">
-            Quran
-          </h1>
-        </div>
-        <div className="flex">
-          <div className="mr-4 border-2 border-gray-400 rounded-lg md:rounded-full">
-            <input
-              className="w-24 lg:w-48 px-2 sm:px-3 sm:py-1 md:p-4 md:py-2 text-sm outline-none rounded-lg md:rounded-full"
-              type="text"
-              placeholder="Search"
-            />
-            <i className="fa-solid fa-magnifying-glass mr-2"></i>
-          </div>
-          <div className="relative lg:hidden">
-            <i
-              className="fa-solid fa-bars absolute top-2/4 transform -translate-y-2/4"
-              onClick={() => setMenu(true)}
-            ></i>
-          </div>
-          <div className="hidden lg:flex items-center">
-            <button className="bg-secondary py-2 px-5 text-white rounded-full">
-              Support
-            </button>
-          </div>
-        </div>
-      </div>
+      <Navbar setMenu={setMenu} />
       <div className="h-5/6 flex flex-col-reverse 2xl:flex-row">
         <div className="h-full w-11/12 lg:w-10/12 bg-primary my-6 mx-4 lg:ml-24 lg:mr-24 xl:mr-12 p-4 lg:p-6 rounded-lg lg:rounded-3xl overflow-y-auto">
           <Outlet />
