@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { Footer } from "./Footer/Footer";
 import { Menu } from "./Menu/Menu";
 import { Navbar } from "./Navbar/Navbar";
 import { Sidebar } from "./Sidebar/Sidebar";
@@ -76,32 +77,8 @@ export const Home = () => {
             </p>
           </div>
         </div>
-        <div className="px-6 pt-3 flex justify-around text-sm 2xl:hidden">
-          <div className="">
-            <img
-              src="./images/Img_Icon.png"
-              alt="image-user"
-              className="w-16 h-16"
-            />
-            <p className="text-xs">
-              Salam, <b>Heri</b>{" "}
-            </p>
-          </div>
-          <div className="relative text-center flex justify-between flex-col">
-            <i className="fa-solid fa-headphones absolute text-3xl top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 opacity-30"></i>
-            <h1>Last Read</h1>
-            <p className="">Al-Fatihah</p>
-          </div>
-          <div className="relative text-center flex justify-between flex-col">
-            <i className="fa-solid fa-book-open absolute text-3xl top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 opacity-30"></i>
-            <h1>Last Read</h1>
-            <p className="">Al-Fatihah (1)</p>
-          </div>
-        </div>
       </div>
-      <div className="text-center text-xs md:text-sm xl:text-base font-bold text-slate-400 fixed bottom-12 lg:bottom-4 xl:bottom-8 left-2/4 -translate-x-2/4">
-        &copy; Copyright {new Date().getFullYear()}, All Right Reversed.
-      </div>
+      <Footer />
     </div>
   );
 };
