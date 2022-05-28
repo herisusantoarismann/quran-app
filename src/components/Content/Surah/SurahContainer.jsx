@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { SurahItem } from "./SurahItem";
+import { SortContainer } from "../Sort/SortContainer";
 
 export const SurahContainer = () => {
   const [data, setData] = useState();
@@ -60,7 +61,8 @@ export const SurahContainer = () => {
   return (
     <>
       <div className="flex justify-end mt-2 mb-8 text-xs md:text-sm">
-        <div className="hidden sm:flex gap-4">
+        <SortContainer changeSort={changeSort} />
+        {/* <div className="hidden sm:flex gap-4">
           <div
             className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer ${
               sort.number == 1 ? "bg-white" : "blur-[0.6px]"
@@ -115,48 +117,7 @@ export const SurahContainer = () => {
               )}
             </div>
           </div>
-        </div>
-        <div className="flex justify-end sm:hidden">
-          <div
-            className={`p-1 w-20 flex items-center gap-1 cursor-pointer ${
-              sort.number == 1 ? "text-black" : "text-slate-400"
-            }`}
-            onClick={() => changeSort(1, !sort.type)}
-          >
-            <p>Number</p>
-            {sort.type && sort.number == 1 ? (
-              <i className="fa-solid fa-arrow-up"></i>
-            ) : (
-              <i className="fa-solid fa-arrow-down"></i>
-            )}
-          </div>
-          <div
-            className={`p-1 w-20 flex items-center gap-1 cursor-pointer ${
-              sort.number == 2 ? "text-black" : "text-slate-400"
-            }`}
-            onClick={() => changeSort(2, !sort.type)}
-          >
-            <p>Alphabet</p>
-            {sort.type && sort.number == 2 ? (
-              <i className="fa-solid fa-arrow-up"></i>
-            ) : (
-              <i className="fa-solid fa-arrow-down"></i>
-            )}
-          </div>
-          <div
-            className={`p-1 w-20 flex items-center gap-1 cursor-pointer ${
-              sort.number == 3 ? "text-black" : "text-slate-400"
-            }`}
-            onClick={() => changeSort(3, !sort.type)}
-          >
-            <p>Total Ayat</p>
-            {sort.type && sort.number == 3 ? (
-              <i className="fa-solid fa-arrow-up"></i>
-            ) : (
-              <i className="fa-solid fa-arrow-down"></i>
-            )}
-          </div>
-        </div>
+        </div> */}
       </div>
       <div className="my-2 lg:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
         {data !== undefined ? (

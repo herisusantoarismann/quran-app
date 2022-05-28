@@ -8,6 +8,8 @@ export const ImamContainer = () => {
   // type false if ascending and true if descending
   const [sort, setSort] = useState(false);
 
+  const sortTitle = ["Aplhabet"];
+
   const changeSort = (sort) => {
     if (sort) {
       setImam(imam.sort((a, b) => a.name.localeCompare(b.name)));
@@ -33,7 +35,7 @@ export const ImamContainer = () => {
   return (
     <>
       <div className="flex justify-end mt-2 mb-8 text-xs md:text-sm">
-        <SortContainer changeSort={changeSort} sort={sort} />
+        <SortContainer changeSort={changeSort} sort={sort} title={sortTitle} />
       </div>
       <div className="my-2 lg:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
         {imam !== undefined ? (
