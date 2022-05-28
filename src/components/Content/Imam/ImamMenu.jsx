@@ -1,4 +1,5 @@
 import React from "react";
+import { ImamMenuItem } from "./ImamMenuItem";
 
 export const ImamMenu = ({ data, imam, setImamMenu, imamMenu, changeImam }) => {
   return (
@@ -16,26 +17,12 @@ export const ImamMenu = ({ data, imam, setImamMenu, imamMenu, changeImam }) => {
       </span>
       {data.map((item, index) => {
         return (
-          <div
-            className={`my-2 py-1 px-2 flex font-semibold ${
-              imam === index + 1 ? "text-secondary" : ""
-            }`}
-          >
-            <p className="mr-4">
-              {index + 1} {item.number}.
-            </p>
-            <p
-              className="mr-2 underline cursor-pointer hover:text-secondary"
-              onClick={() => changeImam(item.id)}
-            >
-              {item.name}
-            </p>
-            {imam === index + 1 ? (
-              <p className="text-black">(Now use this voice)</p>
-            ) : (
-              ""
-            )}
-          </div>
+          <ImamMenuItem
+            data={item}
+            index={index}
+            imam={imam}
+            changeImam={changeImam}
+          />
         );
       })}
     </div>
