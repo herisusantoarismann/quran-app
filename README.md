@@ -1,5 +1,3 @@
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/herisusantoarisman/]
-
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="public/images/logo.png" alt="Logo" width="80" height="80">
@@ -82,7 +80,7 @@ This is an example of how to list things you need to use the software and how to
 
 ## Contact
 
-Heri Susanto Arisman - heri.s.arisman@gmail.com
+Heri Susanto Arisman - heri.s.arisman@gmail.com - ![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white) Heri Susanto Arisman
 
 Project Link: [https://github.com/herisusantoarismann/quran-app](https://github.com/herisusantoarismann/quran-app)
 
