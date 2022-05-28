@@ -85,7 +85,7 @@ Heri Susanto Arisman - heri.s.arisman@gmail.com
 Project Link: [https://github.com/herisusantoarismann/quran-app](https://github.com/herisusantoarismann/quran-app)
 
 <span align="center">
-![LinkedIn](https://www.linkedin.com/in/herisusantoarisman/) 
+![LinkedIn](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) 
 ![GitHub](https://github.com/herisusantoarismann) 
 </span>
 
