@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { ImamItem } from "./ImamItem";
 
 export const ImamContainer = () => {
   const [imam, setImam] = useState(undefined);
@@ -67,20 +68,7 @@ export const ImamContainer = () => {
         {imam !== undefined ? (
           <>
             {imam.map((item, index) => {
-              return (
-                <div
-                  className="bg-white h-32 xl:h-40 p-2 md:p-4 rounded-md md:rounded-lg flex justify-between flex-col text-sm md:text-base shadow-sm cursor-pointer z-10 duration-300 hover:-translate-x-8 hover:translate-y-3"
-                  key={item.id}
-                >
-                  <div className="flex justify-between items-center">
-                    <span>{index + 1}</span>
-                    <i className="fa-solid fa-star text-secondary"></i>
-                  </div>
-                  <p className="font-semibold text-xs leading-3 lg:text-sm xl:font-bold tracking-wide">
-                    {item.name}
-                  </p>
-                </div>
-              );
+              return <ImamItem data={item} index={index} />;
             })}
           </>
         ) : (
