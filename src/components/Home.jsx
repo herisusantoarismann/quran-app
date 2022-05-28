@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { Menu } from "./Menu";
 
 export const Home = () => {
   const [menu, setMenu] = useState(false);
@@ -9,30 +10,11 @@ export const Home = () => {
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("quran"));
     setRecent(data);
-    console.log(recent);
   }, []);
 
   return (
     <div className="w-screen h-screen overflow-x-hidden">
-      <div
-        className={`w-2/4 h-full fixed right-0 bg-secondary flex justify-center items-center flex-col z-30 ${
-          menu ? "" : "transform translate-x-full"
-        } duration-500`}
-      >
-        <i
-          className="fa-solid fa-arrow-right absolute top-4 left-4 text-white text-lg font-bold"
-          onClick={() => setMenu(false)}
-        ></i>
-        <span className="text-lg font-bold text-center text-white tracking-widest my-4">
-          Home
-        </span>
-        <span className="text-lg font-bold text-center text-white tracking-widest my-4">
-          About
-        </span>
-        <span className="text-lg font-bold text-center text-white tracking-widest my-4">
-          Contact
-        </span>
-      </div>
+      <Menu setMenu={setMenu} menu={menu} />
       <div className="h-full absolute hidden lg:flex p-7 bg-slate-50/50 flex-col rounded-r-xl text-center">
         <div className="bg-secondary rounded-full p-2">
           <img src="images/icon.png" alt="" className="w-6 cursor-pointer" />
