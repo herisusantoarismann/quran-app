@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { AyahItem } from "./AyahItem";
 
 export const AyahContainer = () => {
   const params = useParams();
@@ -13,7 +14,6 @@ export const AyahContainer = () => {
     currentTime: 0,
   });
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef();
 
   const getImam = () => {
     axios.get(`https://quran-endpoint.vercel.app/imam`).then((res) => {
@@ -157,47 +157,15 @@ export const AyahContainer = () => {
               <div className="text-sm mt-4">
                 {surah.ayahs.map((item, index) => {
                   return (
-                    <div
-                      className="bg-white my-2 py-2 px-3 rounded-lg"
-                      key={index}
-                    >
-                      <div className="bg-secondary w-fit text-white text-center rounded-full px-[7px] py-[0.5px]">
-                        <p className="text-[10px]">{index + 1}</p>
-                      </div>
-                      <div className="mt-2">
-                        <p className="text-right text-lg sm:text-xl xl:text-2xl">
-                          {item.text.ar}
-                        </p>
-                        <p className="text-xs text-left mt-2 text-justify sm:text-sm xl:text-base">
-                          {item.translation.en}
-                        </p>
-                      </div>
-                      <div className="md:w-2/4 md:mx-auto lg:w-4/12 xl:w-2/12 text-xs text-right mt-3 flex justify-between items-center mx-4">
-                        <div>
-                          <i
-                            ref={audioRef}
-                            className="fa-solid fa-play"
-                            onClick={() =>
-                              isPlaying ? pauseSound() : playSound(index)
-                            }
-                            data-boolean="false"
-                          ></i>
-                        </div>
-                        <div className="text-center sm:w-3/4">
-                          <p className="text-[10px] sm:text-xs">Volume</p>
-                          <input
-                            type="range"
-                            className="sm:w-full"
-                            onChange={(e) => changeVolume(e)}
-                            defaultValue={50}
-                          />
-                        </div>
-                        <i
-                          className="fa-solid fa-stop"
-                          onClick={() => stopSound()}
-                        ></i>
-                      </div>
-                    </div>
+                    <AyahItem
+                      data={item}
+                      index={index}
+                      playSound={playSound}
+                      pauseSound={pauseSound}
+                      stopSound={stopSound}
+                      isPlaying={isPlaying}
+                      changeVolume={changeVolume}
+                    />
                   );
                 })}
               </div>
