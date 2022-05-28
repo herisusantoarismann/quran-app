@@ -1,14 +1,11 @@
 import React from "react";
 import { NavbarSearch } from "./NavbarSearch";
+import { NavbarTitle } from "./NavbarTitle";
 
 export const Navbar = ({ setMenu }) => {
   return (
     <div className="mt-4 mx-6 lg:px-6 flex justify-between items-center">
-      <div className="lg:ml-20">
-        <h1 className="font-bold text-secondary text-2xl tracking-wide">
-          Quran
-        </h1>
-      </div>
+      <NavbarTitle />
       <div className="flex">
         <NavbarSearch />
         <div className="relative lg:hidden">
