@@ -73,7 +73,7 @@ export const SurahContainer = () => {
         {data !== undefined ? (
           <>
             {data.map((item, index) => {
-              return <SurahItem data={item} index={index} />;
+              return <SurahItem data={item} index={index} key={index} />;
             })}
           </>
         ) : (
