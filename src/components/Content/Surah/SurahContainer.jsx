@@ -16,7 +16,9 @@ export const SurahContainer = () => {
     });
   };
 
-  const changeSort = (number, type) => {
+  const sortTitle = ["Number", "Alphabet", "Total Ayah"];
+
+  const changeSort = ({ number, type }) => {
     if (number != sort.number) {
       setSort({ number: number, type: false });
       type = false;
@@ -61,7 +63,7 @@ export const SurahContainer = () => {
   return (
     <>
       <div className="flex justify-end mt-2 mb-8 text-xs md:text-sm">
-        <SortContainer changeSort={changeSort} />
+        <SortContainer changeSort={changeSort} sort={sort} title={sortTitle} />
         {/* <div className="hidden sm:flex gap-4">
           <div
             className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer ${
