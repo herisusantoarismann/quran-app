@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { Menu } from "./Menu";
+import { Menu } from "./Menu/Menu";
 
 export const Home = () => {
   const [menu, setMenu] = useState(false);

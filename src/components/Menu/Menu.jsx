@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MenuItem } from "./MenuItem";
 
 export const Menu = ({ setMenu, menu }) => {
   return (
@@ -11,15 +12,9 @@ export const Menu = ({ setMenu, menu }) => {
         className="fa-solid fa-arrow-right absolute top-4 left-4 text-white text-lg font-bold"
         onClick={() => setMenu(false)}
       ></i>
-      <span className="text-lg font-bold text-center text-white tracking-widest my-4">
-        Home
-      </span>
-      <span className="text-lg font-bold text-center text-white tracking-widest my-4">
-        About
-      </span>
-      <span className="text-lg font-bold text-center text-white tracking-widest my-4">
-        Contact
-      </span>
+      <MenuItem name="Home" />
+      <MenuItem name="About" />
+      <MenuItem name="Contact" />
     </div>
   );
 };
