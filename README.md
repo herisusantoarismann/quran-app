@@ -34,7 +34,7 @@
 
 ## About The Project
 
-[![Quran App][quran app]](Screenshot.png)
+[![Quran App][quran app]](./Screenshot.png)
 
 Here is a screenshot of the application. Consists of a list of letters, a list of verses and a list of priests along with their voices for each verse.
 
