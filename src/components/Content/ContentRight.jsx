@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ContentUser } from "./ContentUser";
 
 export const ContentRight = () => {
   const [recent, setRecent] = useState(null);
@@ -9,13 +10,7 @@ export const ContentRight = () => {
   }, []);
   return (
     <div className="hidden 2xl:flex w-64 pr-12 py-16 justify-between flex-col">
-      <div className="flex justify-between items-center">
-        <div className="">
-          <h3 className="">Salam,</h3>
-          <h2 className="font-bold">Heri</h2>
-        </div>
-        <img src="./images/Img_Icon.png" alt="image-user" className="w-2/5" />
-      </div>
+      <ContentUser name={"Heri"} />
       <hr />
       <div className="flex justify-between items-center">
         <div className="">
