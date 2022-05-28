@@ -5,7 +5,7 @@ import { Menu } from "./Menu/Menu";
 import { Navbar } from "./Navbar/Navbar";
 import { Sidebar } from "./Sidebar/Sidebar";
 
-export const Home = () => {
+export const MainPage = () => {
   const [menu, setMenu] = useState(false);
 
   return (
