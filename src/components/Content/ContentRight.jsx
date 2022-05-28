@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { ContentItem } from "./ContentItem";
 import { ContentQuote } from "./ContentQuote";
 import { ContentUser } from "./ContentUser";
 
 export const ContentRight = () => {
   const [recent, setRecent] = useState(null);
+  const [quote, setQuote] = useState("");
+
+  const getQuote = () => {
+    axios.get("https://api.quotable.io/random").then((res) => {
+      setQuote(res.data);
+    });
+  };
 
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("quran"));
     setRecent(data);
+    getQuote();
   }, []);
+
   return (
     <div className="hidden 2xl:flex w-64 pr-12 py-16 justify-between flex-col">
       <ContentUser name={"Heri"} />
@@ -27,11 +37,7 @@ export const ContentRight = () => {
         icon={"fa-solid fa-headphones"}
         child={true}
       />
-      <ContentQuote
-        quote={
-          "Do not be friend someone who cannot restrain their anger or control their desire. Nor, someone who is a liar or who is greedy for this world"
-        }
-      />
+      <ContentQuote quote={quote.content} author={quote.author} />
     </div>
   );
 };
