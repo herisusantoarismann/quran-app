@@ -16,12 +16,14 @@ export const AyahContainer = () => {
   });
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // function for get data imam
   const getImam = () => {
     axios.get(`https://quran-endpoint.vercel.app/imam`).then((res) => {
       setImamList(res.data.data);
     });
   };
 
+  // function for get data surah
   const getData = () => {
     axios
       .get(
@@ -29,10 +31,12 @@ export const AyahContainer = () => {
       )
       .then((res) => {
         setSurah(res.data.data);
+        // assign title to page
         document.title = "Quran | " + res.data.data.asma.en.short;
       });
   };
 
+  // function to play sound
   const playSound = (id) => {
     const url = surah.ayahs[id].audio.url;
     audio.data.src = url;
@@ -50,21 +54,25 @@ export const AyahContainer = () => {
     );
   };
 
+  // function to pause sound
   const pauseSound = () => {
     audio.data.pause();
     setIsPlaying(false);
     audio.currentTime = audio.data.currentTime;
   };
 
+  // function to stop sound
   const stopSound = () => {
     audio.data.pause();
     audio.currentTime = 0;
   };
 
+  // function to arrange volume
   const changeVolume = (e) => {
     audio.data.volume = e.target.value / 100;
   };
 
+  // function to change imam name
   const changeImam = (id) => {
     setImam(id);
     stopSound();
@@ -75,6 +83,7 @@ export const AyahContainer = () => {
     getImam();
   }, []);
 
+  // change imam if data imam changes
   useEffect(() => {
     getData();
   }, [imam]);

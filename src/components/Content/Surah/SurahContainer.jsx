@@ -16,8 +16,10 @@ export const SurahContainer = () => {
     });
   };
 
+  // array for sort type
   const sortTitle = ["Number", "Alphabet", "Total Ayah"];
 
+  // function to sort data surah
   const changeSort = (number, { type }) => {
     if (number !== sort.number) {
       setSort({ number: number, type: false });
@@ -57,6 +59,7 @@ export const SurahContainer = () => {
   };
 
   useEffect(() => {
+    // assign title page
     document.title = "Quran | Surah List";
     getData();
   }, []);
@@ -65,62 +68,6 @@ export const SurahContainer = () => {
     <>
       <div className="flex justify-end mt-2 mb-8 text-xs md:text-sm">
         <SortContainer changeSort={changeSort} sort={sort} title={sortTitle} />
-        {/* <div className="hidden sm:flex gap-4">
-          <div
-            className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer ${
-              sort.number == 1 ? "bg-white" : "blur-[0.6px]"
-            }`}
-            onClick={() => changeSort(1, !sort.type)}
-          >
-            <div className="leading-6">
-              <p className="text-slate-400">Sort by</p>
-              <p className="font-bold">Number</p>
-            </div>
-            <div className="absolute right-3 bottom-3">
-              {sort.type && sort.number == 1 ? (
-                <i className="fa-solid fa-arrow-up"></i>
-              ) : (
-                <i className="fa-solid fa-arrow-down"></i>
-              )}
-            </div>
-          </div>
-          <div
-            className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer  ${
-              sort.number == 2 ? "bg-white" : "blur-[0.6px]"
-            }`}
-            onClick={() => changeSort(2, !sort.type)}
-          >
-            <div className="leading-6">
-              <p className="text-slate-400">Sort by</p>
-              <p className="font-bold">Alphabet</p>
-            </div>
-            <div className="absolute right-3 bottom-3">
-              {sort.type && sort.number == 1 ? (
-                <i className="fa-solid fa-arrow-up"></i>
-              ) : (
-                <i className="fa-solid fa-arrow-down"></i>
-              )}
-            </div>
-          </div>
-          <div
-            className={`relative p-2 w-24 md:w-36 md:p-3 rounded-lg shadow-sm cursor-pointer  ${
-              sort.number == 3 ? "bg-white" : "blur-[0.6px]"
-            }`}
-            onClick={() => changeSort(3, !sort.type)}
-          >
-            <div className="leading-6">
-              <p className="text-slate-400">Sort by</p>
-              <p className="font-bold">Total Ayah</p>
-            </div>
-            <div className="absolute right-3 bottom-3">
-              {sort.type && sort.number == 1 ? (
-                <i className="fa-solid fa-arrow-up"></i>
-              ) : (
-                <i className="fa-solid fa-arrow-down"></i>
-              )}
-            </div>
-          </div>
-        </div> */}
       </div>
       <div className="my-2 lg:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
         {data !== undefined ? (

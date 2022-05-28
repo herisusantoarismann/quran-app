@@ -8,6 +8,7 @@ export const ContentRight = () => {
   const [recent, setRecent] = useState(null);
   const [quote, setQuote] = useState("");
 
+  // function to get random quote
   const getQuote = () => {
     axios.get("https://api.quotable.io/random").then((res) => {
       setQuote(res.data);
@@ -15,6 +16,7 @@ export const ContentRight = () => {
   };
 
   useEffect(() => {
+    // get last listened surah
     let data = JSON.parse(localStorage.getItem("quran"));
     setRecent(data);
     getQuote();

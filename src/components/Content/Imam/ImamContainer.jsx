@@ -10,6 +10,7 @@ export const ImamContainer = () => {
 
   const sortTitle = ["Aplhabet"];
 
+  // function to sort imam by name
   const changeSort = (number, { type }) => {
     if (type) {
       setImam(imam.sort((a, b) => a.name.localeCompare(b.name)));
@@ -20,6 +21,7 @@ export const ImamContainer = () => {
     }
   };
 
+  // function to get data imam
   const getImam = () => {
     axios.get(`https://quran-endpoint.vercel.app/imam`).then((res) => {
       const imam = res.data.data;
@@ -28,6 +30,7 @@ export const ImamContainer = () => {
   };
 
   useEffect(() => {
+    // assign title page
     document.title = "Quran | Imam List";
     getImam();
   }, []);
