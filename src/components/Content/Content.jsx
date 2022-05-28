@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { MainContent } from "./MainContent";
 
 export const Content = () => {
   const [recent, setRecent] = useState(null);
@@ -11,9 +12,7 @@ export const Content = () => {
 
   return (
     <div className="h-5/6 flex flex-col-reverse 2xl:flex-row">
-      <div className="h-full w-11/12 lg:w-10/12 bg-primary my-6 mx-4 lg:ml-24 lg:mr-24 xl:mr-12 p-4 lg:p-6 rounded-lg lg:rounded-3xl overflow-y-auto">
-        <Outlet />
-      </div>
+      <MainContent />
       <div className="hidden 2xl:flex w-64 pr-12 py-16 justify-between flex-col">
         <div className="flex justify-between items-center">
           <div className="">
