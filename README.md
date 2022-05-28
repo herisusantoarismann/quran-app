@@ -34,7 +34,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][screenshot.png]](https://example.com)
+[![screenshot.png][screenshot]](https://example.com)
 
 Here is a screenshot of the application. Consists of a list of letters, a list of verses and a list of priests along with their voices for each verse.
 
