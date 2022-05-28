@@ -1,5 +1,6 @@
 import React from "react";
 import { NavbarSearch } from "./NavbarSearch";
+import { NavbarSupport } from "./NavbarSupport";
 import { NavbarTitle } from "./NavbarTitle";
 
 export const Navbar = ({ setMenu }) => {
@@ -14,11 +15,7 @@ export const Navbar = ({ setMenu }) => {
             onClick={() => setMenu(true)}
           ></i>
         </div>
-        <div className="hidden lg:flex items-center">
-          <button className="bg-secondary py-2 px-5 text-white rounded-full">
-            Support
-          </button>
-        </div>
+        <NavbarSupport />
       </div>
     </div>
   );
