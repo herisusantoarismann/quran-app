@@ -117,9 +117,13 @@ export const AyahContainer = () => {
                 <span className="flex justify-center text-[10px] sm:text-sm gap-2">
                   <p>{surah.type.en}</p> &#9679; <p>{surah.ayahCount}</p>
                 </span>
-                <p className="text-right text-xs sm:text-sm lg:text-base">
-                  Voice by {imamList[imam - 1].name}
-                </p>
+                {imamList !== undefined ? (
+                  <p className="text-right text-xs sm:text-sm lg:text-base">
+                    Voice by {imamList[imam - 1].name}
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="text-sm mt-4">
                 {surah.ayahs.map((item, index) => {
@@ -132,6 +136,7 @@ export const AyahContainer = () => {
                       stopSound={stopSound}
                       isPlaying={isPlaying}
                       changeVolume={changeVolume}
+                      key={index}
                     />
                   );
                 })}

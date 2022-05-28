@@ -11,6 +11,7 @@ export const SortContainer = ({ changeSort, sort, title }) => {
             sort={sort}
             title={item}
             index={index + 1}
+            key={index}
           />
         );
       })}

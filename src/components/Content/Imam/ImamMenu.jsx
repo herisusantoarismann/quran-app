@@ -22,6 +22,7 @@ export const ImamMenu = ({ data, imam, setImamMenu, imamMenu, changeImam }) => {
             index={index}
             imam={imam}
             changeImam={changeImam}
+            key={index}
           />
         );
       })}
