@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Menu } from "./Menu/Menu";
+import { Sidebar } from "./Sidebar/Sidebar";
 
 export const Home = () => {
   const [menu, setMenu] = useState(false);
   const [recent, setRecent] = useState(null);
-  const location = useLocation();
 
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("quran"));
@@ -15,29 +15,7 @@ export const Home = () => {
   return (
     <div className="w-screen h-screen overflow-x-hidden">
       <Menu setMenu={setMenu} menu={menu} />
-      <div className="h-full absolute hidden lg:flex p-7 bg-slate-50/50 flex-col rounded-r-xl text-center">
-        <div className="bg-secondary rounded-full p-2">
-          <img src="images/icon.png" alt="" className="w-6 cursor-pointer" />
-        </div>
-        <div className="mt-12">
-          <Link to={"/"}>
-            <i
-              className={`fa-solid fa-book-open cursor-pointer duration-150 hover:text-secondary ${
-                location.pathname !== "/imam" ? "text-secondary" : ""
-              }`}
-            ></i>
-          </Link>
-        </div>
-        <div className="mt-12">
-          <Link to={"/imam"}>
-            <i
-              className={`fa-solid fa-volume-high cursor-pointer duration-150 hover:text-secondary ${
-                location.pathname === "/imam" ? "text-secondary" : ""
-              }`}
-            ></i>
-          </Link>
-        </div>
-      </div>
+      <Sidebar />
       <div className="mt-4 mx-6 lg:px-6 flex justify-between items-center">
         <div className="lg:ml-20">
           <h1 className="font-bold text-secondary text-2xl tracking-wide">
