@@ -6,17 +6,17 @@ import { SortContainer } from "../Sort/SortContainer";
 export const ImamContainer = () => {
   const [imam, setImam] = useState(undefined);
   // type false if ascending and true if descending
-  const [sort, setSort] = useState(false);
+  const [sort, setSort] = useState({ type: false });
 
   const sortTitle = ["Aplhabet"];
 
-  const changeSort = (sort) => {
-    if (sort) {
+  const changeSort = (number, { type }) => {
+    if (type) {
       setImam(imam.sort((a, b) => a.name.localeCompare(b.name)));
-      setSort(!sort);
+      setSort({ type: !type });
     } else {
       setImam(imam.sort((a, b) => b.name.localeCompare(a.name)));
-      setSort(!sort);
+      setSort({ type: !type });
     }
   };
 

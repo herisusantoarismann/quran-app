@@ -1,10 +1,10 @@
 import React from "react";
 
-export const SortItem = ({ changeSort, sort, title }) => {
+export const SortItem = ({ changeSort, sort, title, index = null }) => {
   return (
     <div
       className="relative p-2 w-24 sm:bg-white md:w-36 md:p-3 rounded-lg shadow-md cursor-pointer"
-      onClick={() => changeSort(sort)}
+      onClick={() => changeSort(index, sort)}
     >
       <div className="leading-6">
         <p className="sm:text-slate-400">Sort by</p>

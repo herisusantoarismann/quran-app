@@ -18,12 +18,13 @@ export const SurahContainer = () => {
 
   const sortTitle = ["Number", "Alphabet", "Total Ayah"];
 
-  const changeSort = ({ number, type }) => {
-    if (number != sort.number) {
+  const changeSort = (number, { type }) => {
+    if (number !== sort.number) {
       setSort({ number: number, type: false });
       type = false;
     } else {
-      setSort({ number: number, type: type });
+      setSort({ number: number, type: !type });
+      type = !type;
     }
 
     switch (true) {
