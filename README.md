@@ -40,8 +40,6 @@ Here is a screenshot of the application. Consists of a list of letters, a list o
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 - [React.js](https://reactjs.org/)
 - [Tailwindcss](https://tailwindcss.com/)
 
